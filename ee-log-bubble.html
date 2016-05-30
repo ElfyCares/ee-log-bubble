@@ -1,0 +1,123 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+
+<!--
+An element providing a solution to no problem in particular.
+
+Example:
+
+    <ee-log-bubble></ee-log-bubble>
+
+@demo demo/index.html
+@hero hero.svg
+-->
+
+<dom-module id="ee-log-bubble">
+  <template>
+    <style>
+      :host {
+        display: block;
+        box-sizing: border-box;
+      }
+
+      .container {
+        padding: 25px;
+        border-radius: 8px;
+      }
+
+      .container[theme="care"] {
+        background-color: #f1e5f3;
+      }
+
+      .container[theme="life"]{
+        background-color: #e3f7e3;
+      }
+
+      .author {
+        font-size: 14px;
+        padding-bottom: 6px;
+        color: #9b9b9b;
+      }
+
+      .symbol {
+        float: right;
+      }
+
+      .symbol[theme="care"] {
+        color: #c489d0;
+      }
+
+      .symbol[theme="life"] {
+        color: #72d572;
+      }
+
+      .title {
+        font-size: 20px;
+        color: #7e7e7e;
+      }
+
+      .log {
+        font-size: 20px;
+        color: #9b9b9b;
+      }
+      
+    </style>
+    <div class="container" theme$="[[theme]]">
+      <iron-icon class="symbol" theme$="[[theme]]" icon$="[[_icon]]"></iron-icon>
+      <div class="title">[[title]]</div>
+      <div class="author">[[author]]</div>
+      <div class="log">[[log]]</div>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'ee-log-bubble',
+
+      properties: {
+        title: {
+          type: String,
+          value: ''
+        },
+
+        author: {
+          type: String,
+          value: ''
+        },
+
+        log: {
+          type: String,
+          value: ''
+        },
+
+        icon: {
+          type: String,
+          value: 'icons:favorite'
+        },
+
+        theme: {
+          type: String,
+          value: 'care'
+        },
+
+        _icon: {
+          type: String,
+          computed: 'computeDefaultIcon(icon, theme)'
+        }
+      },
+
+      computeDefaultIcon: function(icon, theme) {
+        if (icon !== '') {
+          return icon;
+        }
+
+        if (theme === 'care') {
+          return 'icons:favorite-outline';
+        } else {
+          return 'icons:track-changes';
+        }
+      }
+    });
+  </script>
+</dom-module>
