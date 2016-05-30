@@ -24,50 +24,83 @@ Example:
       .container {
         padding: 25px;
         border-radius: 8px;
+        @apply(--container-bubble);
       }
 
       .container[theme="care"] {
         background-color: #f1e5f3;
+        @apply(--container-care);
       }
 
       .container[theme="life"]{
         background-color: #e3f7e3;
+        @apply(--container-life);
       }
 
       .author {
         font-size: 14px;
         padding-bottom: 6px;
         color: #9b9b9b;
+        @apply(author-bubble);
+      }
+
+      .author[theme="care"] {
+        @apply(author-care);
+      }
+
+      .author[theme="life"] {
+        @apply(author-life);
       }
 
       .symbol {
         float: right;
+        @apply(symbol-bubble);
       }
 
       .symbol[theme="care"] {
         color: #c489d0;
+        @apply(symbol-care);
       }
 
       .symbol[theme="life"] {
         color: #72d572;
+        @apply(symbol-life);
       }
 
       .title {
         font-size: 20px;
         color: #7e7e7e;
+        @apply(title-bubble);
+      }
+
+      .title[theme="care"] {
+        @apply(title-care);
+      }
+
+      .title[theme="life"] {
+        @apply(title-life);
       }
 
       .log {
         font-size: 20px;
         color: #9b9b9b;
+        @apply(log-bubble);
+      }
+
+      .log[theme="care"] {
+        @apply(title-care);
+      }
+
+      .log[theme="life"] {
+        @apply(title-life);
       }
       
     </style>
     <div class="container" theme$="[[theme]]">
       <iron-icon class="symbol" theme$="[[theme]]" icon$="[[_icon]]"></iron-icon>
-      <div class="title">[[title]]</div>
-      <div class="author">[[author]]</div>
-      <div class="log">[[log]]</div>
+      <div class="title" theme$="[[theme]]">[[title]]</div>
+      <div class="author" theme$="[[theme]]">[[author]]</div>
+      <div class="log" theme$="[[theme]]">[[log]]</div>
     </div>
   </template>
 
