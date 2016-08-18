@@ -109,11 +109,14 @@ Example:
       <div class="title" theme$="[[theme]]">[[title]]</div>
       <template is="dom-if" if="[[!editable]]">
         <div class="author" theme$="[[theme]]">[[author]]</div>
-        <div class="log" theme$="[[theme]]">[[log]]</div>
+        <div class="log" theme$="[[theme]]">
+          <span>[[log]]</span>
+          <content></content>
+        </div>
       </template>
       <template is="dom-if" if="[[editable]]">
         <div class="log" theme$="[[theme]]">
-          <paper-textarea class="textarea" value="{{value}}"></paper-textarea>
+          <paper-textarea class="textarea" value="{{value}}" invalid="[[invalid]]"></paper-textarea>
         </div>
       </template>
     </div>
@@ -126,6 +129,12 @@ Example:
       properties: {
 
         editable: {
+          type: Boolean,
+          value: false,
+          notify: true
+        },
+
+        invalid: {
           type: Boolean,
           value: false,
           notify: true
