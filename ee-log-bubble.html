@@ -108,7 +108,7 @@ Example:
       <iron-icon class="symbol" theme$="[[theme]]" icon$="[[_icon]]"></iron-icon>
       <div class="title" theme$="[[theme]]">[[title]]</div>
       <template is="dom-if" if="[[!editable]]">
-        <div class="author" theme$="[[theme]]">[[author]]</div>
+        <div class="author" theme$="[[theme]]"><span>[[author]]</span>&nbsp;<span>[[date]]</span></div>
         <div class="log" theme$="[[theme]]">
           <span>[[log]]</span>
           <content></content>
@@ -146,6 +146,11 @@ Example:
         },
 
         author: {
+          type: String,
+          value: ''
+        },
+
+        date: {
           type: String,
           value: ''
         },
